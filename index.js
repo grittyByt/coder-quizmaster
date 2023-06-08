@@ -1,7 +1,7 @@
 const thatBod = document.body;
-// const theBackground = document.createElement('div');
 const countDown = document.createElement('div');
-const titleName = document.createElement('div')
+const titleName = document.createElement('div');
+const startQuiz = document.createElement('button');
 const formBox = document.createElement('div');
 const thatForm = document.createElement('form');
 const doUKnow = document.createElement('h3');
@@ -12,7 +12,7 @@ const uKnow3 = document.createElement('button');
 const uKnow4 = document.createElement('button');
 const toTheRight = document.createElement('button');
 
-// thatBod.appendChild(theBackground);
+thatBod.appendChild(startQuiz);
 thatBod.appendChild(formBox);
 formBox.appendChild(thatForm);
 thatForm.appendChild(doUKnow);
@@ -22,6 +22,28 @@ ansBox.appendChild(uKnow2);
 ansBox.appendChild(uKnow3);
 ansBox.appendChild(uKnow4);
 thatForm.appendChild(toTheRight);
+
+startQuiz.textContent = 'Do You Even Code';
+let questCycle = 0;
+
+
+startQuiz.setAttribute(
+    'style',
+    'height: 4rem; width: 20rem; background: #cd5c5c; border-radius: 5px'
+);
+
+startQuiz.addEventListener('click', (e) => {
+    e.preventDefault;
+    startQuiz.style.display = 'none';
+    formBox.style.display = 'flex';
+
+    muggleBlood();
+});
+
+function muggleBlood() {
+    questCycle = 0;
+    whatUKnow();
+};
 
 // doUKnow.textContent = '';
 // uKnow1.textContent = '1969';
@@ -76,7 +98,7 @@ thatBod.setAttribute(
 
 formBox.setAttribute(
     'style',
-    'height: 40rem; width: 35rem; background: #f08080; border-radius: 7px; display: flex; justify-content: center; align-items: center'
+    'height: 40rem; width: 35rem; background: #f08080; border-radius: 7px; display: none; justify-content: center; align-items: center'
 );
 
 thatForm.setAttribute(
@@ -152,7 +174,53 @@ uKnow4.addEventListener('mouseover', (colorChange) => {
     }, 600);
 });
 
-// function naruto() {
-//     if()
-// }
 
+
+function whatUKnow() {
+    switchUp();
+    let theQuestion = questions[questCycle];
+    let numero = questCycle + 1;
+    doUKnow.innerHTML = numero + '. ' + theQuestion.question;
+    
+    theQuestion.answers.forEach(answer => {
+        
+        const ansButtons = document.createElement('button');
+        ansBox.appendChild(ansButtons);
+        ansButtons.textContent = answer.text;
+
+        ansButtons.setAttribute(
+            'style',
+            'background: #e9967a; margin-bottom: 0.5rem; height: 3rem; border-radius: 5px; font-size: 15px'
+        );
+        
+        if(answer.correct) {
+            ansButtons.dataset.correct = answer.correct;
+        };
+
+        ansButtons.addEventListener('click', whichAns);
+    })
+};
+
+function switchUp(){
+    toTheRight.style.display = 'none';
+    // uKnow2.style.display = 'none';
+    // uKnow3.style.display = 'none';
+    // uKnow4.style.display = 'none';
+
+    while(ansBox.firstChild) {
+        ansBox.removeChild(ansBox.firstChild);
+
+    };
+};
+
+function whichAns(e) {
+    e.preventDefault();
+    const btnChoice = e.target;
+    const correctAns = btnChoice.dataset.correct === 'true';
+
+    if(correctAns) {
+        btnChoice.classlist.add('correct');
+    } else {
+        btnChoice.classlist.add('incorrect');
+    };
+};
