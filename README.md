@@ -1,1 +1,1 @@
-# organiztional-calendar
+I created this quiz to test all coders who dare to trek these murky waters of mastering the computer.  It is my hope that throught it all people who pursue coding stick to what led them there in the first place, and understand practice makes perfect even if it's only a little.  I code to help others with what I have learned, and seek to learn from those better at code than I am so I too can improve daily.  These questions are to motivate all who dare to takes the quiz.
