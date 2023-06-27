@@ -4,11 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Suck it up Buttercup</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/style/style.css">
 </head>
 <body>
-    
+    <div class="scores"><a href="bestScores.html">View the Best Scores</a></div>
+
+    <div class="timer">Time: <span id="time">0</span></div>
+
+    <div class="container">
+      <div id="quizBegin" class="start">
+        <h1>Can you even Code?</h1>
+        <p>
+          Here are some code related questions to test your knowledge on coding.  Wrong
+          answers will penalize you by 15 seconds!
+        </p>
+        <button id="start">Start Quiz</button>
+      </div>
+
+      <div id="whatYouKnow" class="hide">
+        <h2 id="questions"></h2>
+        <div id="choices" class="choices"></div>
+      </div>
+
+      <div id="complete" class="hide">
+        <h2>Well done!</h2>
+        <p>Your final score is: <span id="finalScore"></span>.</p>
+        <p>
+          Enter initials: <input type="text" id="initials" max="3" />
+          <button id="submit">Submit</button>
+        </p>
+      </div>
+
+      <div id="feedback" class="feedback hide"></div>
+    </div>
+
+    <script src="./assets/js/questions.js"></script>
+    <script src="./assets/js/logic.js"></script>
 </body>
-<script src="index.js"></script>
 </html>
